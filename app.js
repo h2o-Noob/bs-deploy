@@ -14,7 +14,7 @@ app.use(fileUpload())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 if (process.env.NODE_ENV !== "PRODUCTION") {
-    require("dotenv").config({ path: "config/config.env" });
+    require("dotenv").config({ path: "server/config/config.env" });
   }
 // report route
 const reports = require("./routes/ReportRoutes")
