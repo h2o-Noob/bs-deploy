@@ -33,7 +33,6 @@ import {
   CLEAR_ERRORS,
 } from "../constants/ReportConstants";
 
-const url = 'https://bs-v2-api.herokuapp.com/api'
 
 // get reports
 export const getReports = (keyword="") => async (dispatch) => {
