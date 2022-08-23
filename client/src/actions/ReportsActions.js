@@ -33,14 +33,13 @@ import {
   CLEAR_ERRORS,
 } from "../constants/ReportConstants";
 
-const url = 'https://bs-v2-api.herokuapp.com/api'
 
 // get reports
 export const getReports = (keyword="") => async (dispatch) => {
   try {
     dispatch({ type: ALL_REPORT_REQUEST });
 
-    let link = `${url}/reports?keyword=${keyword}`;
+    let link = `/api/reports?keyword=${keyword}`;
 
     const { data } = await axios.get(link);
 
@@ -61,7 +60,7 @@ export const reportDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: REPORT_DETAILS_REQUEST });
 
-    const { data } = await axios.get(`${url}/report/${id}`);
+    const { data } = await axios.get(`/api/report/${id}`);
 
     dispatch({
       type: REPORT_DETAILS_SUCCESS,
@@ -80,7 +79,7 @@ export const myReports = () => async (dispatch) => {
   try {
     dispatch({ type: USER_REPORT_REQUEST });
 
-    const { data } = await axios.get(`${url}/me/reports`);
+    const { data } = await axios.get(`/api/me/reports`);
 
     dispatch({ type: USER_REPORT_SUCCESS, payload: data.reports });
   } catch (error) {
@@ -101,7 +100,7 @@ export const createReport = (reportData) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      `${url}/reports`,
+      `/api/reports`,
       reportData,
       config
     );
@@ -128,7 +127,7 @@ export const updateReport = (id, reportData) => async (dispatch) => {
     };
 
     const { data } = await axios.put(
-      `${url}/report/${id}`,
+      `/api/report/${id}`,
       reportData,
       config
     );
@@ -150,7 +149,7 @@ export const deleteReport = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_REPORT_REQUEST });
 
-    const { data } = await axios.delete(`${url}/report/${id}`);
+    const { data } = await axios.delete(`/api/report/${id}`);
 
     dispatch({
       type: DELETE_REPORT_SUCCESS,
