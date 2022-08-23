@@ -5,8 +5,10 @@ const path = require("path")
 const bodyParser = require("body-parser")
 const fileUpload = require("express-fileupload")
 const cookieParser = require("cookie-parser")
+const dotenv = require("dotenv");
 var cors = require('cors');
-require("dotenv").dotenv.config({ path: "config/config.env" });
+
+dotenv.config({ path: "config/config.env" });
 
 app.use(express.json())
 app.use(cookieParser())
