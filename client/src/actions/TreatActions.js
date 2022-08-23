@@ -37,7 +37,7 @@ export const createTreat = (treat) => async (dispatch) => {
         "Content-Type": "application/json",
       },
     };
-    const { data } = await axios.post(`${url}/treat/new`, treat, config);
+    const { data } = await axios.post(`/api/treat/new`, treat, config);
 
     dispatch({ type: CREATE_TREAT_SUCCESS, payload: data });
   } catch (error) {
@@ -53,7 +53,7 @@ export const reportTreats = (id) => async (dispatch) => {
   try {
     dispatch({ type: REPORT_TREATS_REQUEST });
 
-    const { data } = await axios.get(`${url}/treat/report/${id}`);
+    const { data } = await axios.get(`/api/treat/report/${id}`);
 
     dispatch({ type: REPORT_TREATS_SUCCESS, payload: data.treats });
   } catch (error) {
@@ -69,7 +69,7 @@ export const myTreats = () => async (dispatch) => {
   try {
     dispatch({ type: MY_TREATS_REQUEST });
 
-    const { data } = await axios.get(`${url}/treats/me`);
+    const { data } = await axios.get(`/api/treats/me`);
 
     dispatch({ type: MY_TREATS_SUCCESS, payload: data.treats });
   } catch (error) {
@@ -85,7 +85,7 @@ export const myTreats = () => async (dispatch) => {
 //   try {
 //     dispatch({ type: ALL_TREATS_REQUEST });
 
-//     const { data } = await axios.get("${url}/v1/admin/treats");
+//     const { data } = await axios.get("/api/v1/admin/treats");
 
 //     dispatch({ type: ALL_TREATS_SUCCESS, payload: data.data });
 //   } catch (error) {
@@ -107,7 +107,7 @@ export const myTreats = () => async (dispatch) => {
 //       },
 //     };
 //     const { data } = await axios.put(
-//       `${url}/v1/admin/treat/${id}`,
+//       `/api/v1/admin/treat/${id}`,
 //       treat,
 //       config
 //     );
@@ -126,7 +126,7 @@ export const myTreats = () => async (dispatch) => {
 //   try {
 //     dispatch({ type: DELETE_TREAT_REQUEST });
 
-//     const { data } = await axios.delete(`${url}/v1/admin/treat/${id}`);
+//     const { data } = await axios.delete(`/api/v1/admin/treat/${id}`);
 
 //     dispatch({ type: DELETE_TREAT_SUCCESS, payload: data.success });
 //   } catch (error) {
@@ -142,7 +142,7 @@ export const myTreats = () => async (dispatch) => {
 //   try {
 //     dispatch({ type: TREAT_DETAILS_REQUEST });
 
-//     const { data } = await axios.get(`${url}/v1/treat/${id}`);
+//     const { data } = await axios.get(`/api/v1/treat/${id}`);
 
 //     dispatch({ type: TREAT_DETAILS_SUCCESS, payload: data.data });
 //   } catch (error) {

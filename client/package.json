@@ -2,6 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:5000",
   "dependencies": {
     "@mui/icons-material": "^5.8.4",
     "@stripe/react-stripe-js": "^1.10.0",

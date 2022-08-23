@@ -53,7 +53,7 @@ export const login = (email, password) => async (dispatch) => {
     const config = { headers: { "Content-Type": "application/json" } };
 
     const { data } = await axios.post(
-      `${url}/login`,
+      `/api/login`,
       { email, password },
       config
     );
@@ -71,7 +71,7 @@ export const register = (userData) => async (dispatch) => {
 
     const config = { headers: { "Content-Type": "multipart/form-data" } };
 
-    const { data } = await axios.post(`${url}/register`, userData, config);
+    const { data } = await axios.post(`/api/register`, userData, config);
 
     dispatch({ type: REGISTER_USER_SUCCESS, payload: data.user });
   } catch (error) {
@@ -87,7 +87,7 @@ export const loadUser = () => async (dispatch) => {
   try {
     dispatch({ type: LOAD_USER_REQUEST });
 
-    const { data } = await axios.get(`${url}/me`);
+    const { data } = await axios.get(`/api/me`);
 
     dispatch({ type: LOAD_USER_SUCCESS, payload: data.user });
   } catch (error) {
@@ -102,7 +102,7 @@ export const updateProfile = (userData) => async (dispatch) => {
 
     const config = { headers: { "Content-Type": "multipart/form-data" } };
 
-    const { data } = await axios.put(`${url}/me/update`, userData, config);
+    const { data } = await axios.put(`/api/me/update`, userData, config);
 
     dispatch({ type: UPDATE_PROFILE_SUCCESS, payload: data.success });
   } catch (error) {
@@ -121,7 +121,7 @@ export const updatePassword = (passwords) => async (dispatch) => {
     const config = { headers: { "Content-Type": "application/json" } };
 
     const { data } = await axios.put(
-      `${url}/password/update`,
+      `/api/password/update`,
       passwords,
       config
     );
@@ -138,7 +138,7 @@ export const updatePassword = (passwords) => async (dispatch) => {
 // logout
 export const logout = () => async (dispatch) => {
   try {
-    await axios.get(`${url}/logout`);
+    await axios.get(`/api/logout`);
 
     dispatch({ type: LOGOUT_SUCCESS });
   } catch (error) {
