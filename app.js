@@ -6,16 +6,13 @@ const bodyParser = require("body-parser")
 const fileUpload = require("express-fileupload")
 const cookieParser = require("cookie-parser")
 var cors = require('cors');
+require("dotenv").dotenv.config({ path: "config/config.env" });
 
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors());
 app.use(fileUpload())
 app.use(bodyParser.urlencoded({ extended: true }))
-
-if (process.env.NODE_ENV !== "PRODUCTION") {
-    require("dotenv").config({ path: "server/config/config.env" });
-  }
 // report route
 const reports = require("./routes/ReportRoutes")
 app.use("/api", reports)
